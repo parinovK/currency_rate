@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 public class CurrencyController {
     private final CbrService service;
     @GetMapping("/{code}")
-    public BigDecimal getCurrencyRate(@PathVariable String code){
+    public String getCurrencyRate(@PathVariable String code){
         return service.requestByCurrencyCode(code);
     }
 }
