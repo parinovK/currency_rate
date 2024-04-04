@@ -4,13 +4,14 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+
 @Getter
 @Setter
 public class Valute { //for XmlModel
-    private String NumCode;
+    private Integer NumCode;
     private String CharCode;
-    private String Nominal;
+    private Integer Nominal;
     private String Name;
-    private String Value;
-    private String VunitRate;
+    private Double Value;
+    private Double VunitRate;
 }

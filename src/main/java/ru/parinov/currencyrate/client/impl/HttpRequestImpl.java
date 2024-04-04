@@ -7,10 +7,12 @@ import ru.parinov.currencyrate.repository.CbrRepository;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.math.BigDecimal;
 import java.net.URL;
 import java.net.URLConnection;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Map;
 
 @Component
@@ -23,9 +25,9 @@ public class HttpRequestImpl implements HttpRequest {
     private final CbrRepository repository;
 
     @Override
-    public String requestByCurrencyCode(String charCode, LocalDate date) {
+    public Double requestByCurrencyCode(String charCode, LocalDate date) {
         String sourceXml = requestByDate(date);
-        Map<String, String> parseXml = repository.parseXml(sourceXml);
+        Map<String, Double> parseXml = repository.parseXml(sourceXml);
         return parseXml.getOrDefault(charCode, null);
     }
 

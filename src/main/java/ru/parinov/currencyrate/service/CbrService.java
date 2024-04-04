@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.parinov.currencyrate.client.HttpRequest;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Service
@@ -11,7 +12,7 @@ import java.time.LocalDate;
 public class CbrService {
     private final HttpRequest request;
 
-    public String requestByCurrencyCode(String code, LocalDate date) {
+    public Double requestByCurrencyCode(String code, LocalDate date) {
         return request.requestByCurrencyCode(code, date);
     }
 }

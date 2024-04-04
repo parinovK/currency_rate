@@ -15,20 +15,21 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 import java.io.StringReader;
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
 @Repository
 public class ParserRepository implements CbrRepository {
 
-    Map<String, String> parsingData;
+    Map<String, Double> parsingData;
 
     public ParserRepository() {
         this.parsingData = new HashMap<>();
     }
 
     @Override
-    public Map<String, String> parseXml(String xml){
+    public Map<String, Double> parseXml(String xml){
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         try {
             DocumentBuilder builder = factory.newDocumentBuilder();
@@ -40,12 +41,12 @@ public class ParserRepository implements CbrRepository {
             for (int i = 0; i < nodes.getLength(); i++) {
                 Element node = (Element) nodes.item(i);
                 Valute employee = new Valute();
-                employee.setNumCode(node.getElementsByTagName("NumCode").item(0).getTextContent());
+                employee.setNumCode(Integer.valueOf(node.getElementsByTagName("NumCode").item(0).getTextContent()));
                 employee.setCharCode(node.getElementsByTagName("CharCode").item(0).getTextContent());
-                employee.setNominal(node.getElementsByTagName("Nominal").item(0).getTextContent());
+                employee.setNominal(Integer.valueOf(node.getElementsByTagName("Nominal").item(0).getTextContent()));
                 employee.setName(node.getElementsByTagName("Name").item(0).getTextContent());
-                employee.setValue(node.getElementsByTagName("Value").item(0).getTextContent());
-                employee.setVunitRate(node.getElementsByTagName("VunitRate").item(0).getTextContent());
+                employee.setValue(Double.valueOf(node.getElementsByTagName("Value").item(0).getTextContent().replace(',','.')));
+                employee.setVunitRate(Double.valueOf(node.getElementsByTagName("VunitRate").item(0).getTextContent().replace(',','.')));
                 parsingData.put(employee.getCharCode(), employee.getValue());
             }
             return parsingData;
