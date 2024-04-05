@@ -6,9 +6,6 @@ import ru.parinov.currencyrate.service.CbrService;
 
 import java.time.LocalDate;
 
-//отрефакторить парсер xml в репозитории
-//хранить не в стринге, а в числе
-
 @RestController
 @RequestMapping("api/v1/currency")
 @RequiredArgsConstructor

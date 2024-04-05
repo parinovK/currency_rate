@@ -15,7 +15,6 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 import java.io.StringReader;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,7 +28,7 @@ public class ParserRepository implements CbrRepository {
     }
 
     @Override
-    public Map<String, Double> parseXml(String xml){
+    public Map<String, Double> parseXmlToMap(String xml){
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         try {
             DocumentBuilder builder = factory.newDocumentBuilder();

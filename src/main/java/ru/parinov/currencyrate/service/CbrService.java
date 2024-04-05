@@ -3,8 +3,6 @@ package ru.parinov.currencyrate.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.parinov.currencyrate.client.HttpRequest;
-
-import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Service
